@@ -12,15 +12,16 @@ public class Solution {
     }
 
     public static void recursive(String key, HashMap<String, Object> dict, HashMap<String, String> result){
-        //iterate through the input
-        //and if value of the current element is a string, then just add it to the result hashmap
+        //iterate through the input 'dict'
+        //if the value of current element is type string, then just add it to the result hashmap
         //otherwise keep iterate
         for(Map.Entry element : dict.entrySet()){
             String currKey = (String)element.getKey();
 
             //check whether the type of value is string or object
             if(element.getValue() instanceof String){
-                //if the sent in key is "", or current key is "", do not append "." to the key string
+                //if the sent in key is null or "", means we are at the very out loop
+                //else we append "." to the key sent in from last level and then append current key
                 if(key == null || key.equals("")){
                     result.put(currKey, (String)element.getValue());
                 }else{
